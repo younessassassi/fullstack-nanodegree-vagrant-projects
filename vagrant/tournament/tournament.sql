@@ -1,9 +1,18 @@
--- Table definitions for the tournament project.
---
--- Put your SQL 'create table' statements in this file; also 'create view'
--- statements if you choose to use it.
---
--- You can write comments in this file by starting them with two dashes, like
--- these lines here.
+-- player table
+CREATE TABLE player ( id SERIAL PRIMARY KEY,
+					  full_name VARCHAR(40) NOT NULL,
+					  games_played INTEGER DEFAULT 0,
+					  wins INTEGER DEFAULT 0);
 
+-- game table
+CREATE TABLE match ( winner_id INTEGER REFERENCES player(id),
+				   	 loser_id INTEGER REFERENCES player(id),
+				   	 CONSTRAINT game_key PRIMARY KEY (winner_id, loser_id));
 
+-- -- player standing
+-- CREATE VIEW player_standing AS 
+-- 			SELECT player.id, player.full_name from player
+
+-- CREATE TABLE player_standing ( player_id INTEGER REFERENCES player(id),
+-- 							   games_played INTEGER DEFAULT 0,
+-- 							   wins INTEGER DEFAULT 0);
