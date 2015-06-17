@@ -75,7 +75,6 @@ def playerStandings():
     result = c.fetchall()
     DB.close()
     return result
-    # return standing
 
 
 def reportMatch(winner, loser):
@@ -116,5 +115,17 @@ def swissPairings():
         id2: the second player's unique id
         name2: the second player's name
     """
+    standings = playerStandings()
+    pairinglst = []
+    row = 0
+    while row < len(standings):
+        (i_1, n_1, w_1, m_1) = standings[row]
+        row = row +  1
+        (i_2, n_2, w_2, m_2) = standings[row]
+        row = row + 1
+        pairing = (i_1, n_1, i_2, n_2)
+        pairinglst.append(pairing)
+
+    return pairinglst
 
 

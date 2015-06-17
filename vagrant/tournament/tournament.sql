@@ -8,11 +8,3 @@ CREATE TABLE player ( id SERIAL PRIMARY KEY,
 CREATE TABLE match ( winner_id INTEGER REFERENCES player(id),
 				   	 loser_id INTEGER REFERENCES player(id),
 				   	 CONSTRAINT game_key PRIMARY KEY (winner_id, loser_id));
-
--- -- player standing
--- CREATE VIEW player_standing AS 
--- 			SELECT player.id, player.full_name from player
-
--- CREATE TABLE player_standing ( player_id INTEGER REFERENCES player(id),
--- 							   games_played INTEGER DEFAULT 0,
--- 							   wins INTEGER DEFAULT 0);
