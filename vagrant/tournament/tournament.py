@@ -71,7 +71,7 @@ def playerStandings():
     """
     DB = connect()
     c = DB.cursor()
-    c.execute("SELECT id, full_name as name, wins, games_played as matches FROM player ORDER BY wins DESC")
+    c.execute("SELECT id, full_name as name, wins, games_played as matches FROM player ORDER BY wins DESC, matches DESC")
     result = c.fetchall()
     DB.close()
     return result
@@ -87,14 +87,14 @@ def reportMatch(winner, loser):
     DB = connect()
     c = DB.cursor()
 
-    # create game record
+    """create game record"""
     c.execute("INSERT INTO match VALUES (%s, %s)", (winner, loser,))
     
-    # update winner game record 
+    """update winner game record"""
     c.execute("UPDATE player SET games_played = games_played + 1, wins = wins + 1 WHERE id = %s", (winner,))
    
-    # update loser game count
-    c.execute("UPDATE player SET games_played = games_played + 1WHERE id = %s", (loser,))
+    """update loser game count"""
+    c.execute("UPDATE player SET games_played = games_played + 1 WHERE id = %s", (loser,))
   
     DB.commit()
     DB.close()
