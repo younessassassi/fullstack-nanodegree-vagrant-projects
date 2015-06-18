@@ -1,4 +1,4 @@
-## Tournament Based on Swiss System - part of [Full Stack Web Developer Nanodegree] 
+## Tournament Based on Swiss System - part of [Full Stack Web Developer Nanodegree](https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004)
 
 A Python project using PostgreSQL database to manage tournament players and rounds.
 
@@ -6,25 +6,23 @@ The game tournament uses the Swiss system for pairing up players in each round: 
 
 # How to run the code
 
-1. Install [Vagrant] and [VirtualBox]
-2. Clone this repository
-3. Launch the Vagrant VM 
-4. login to the linux box and cd to the tournament folder
+* Install [Vagrant](http://vagrantup.com) and [VirtualBox](https://www.virtualbox.org)
+* Clone this repository
+* Launch the Vagrant VM 
+* login to the linux box and cd to the tournament folder
 ```sh
 $ vagrant up
 $ vagrant ssh
 $ cd path/to/project/folder
 ```
-5. Create the database
+
+* Create the database
 ```sh
 $ psql
 => \i tournament.sql
 => \q
 ```
-6. Run the test script
+
+* Run the test script
 ```sh
 $ python tournament_test.py
-
-[Full Stack Web Developer Nanodegree]:https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004
-[Vagrant]:http://vagrantup.com
-[VirtualBox]:https://www.virtualbox.org
